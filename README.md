@@ -36,12 +36,15 @@ It uses **Google Gemini (via LangChain)** to automatically generate MongoDB aggr
 ```bash
 git clone https://github.com/your-username/chat-with-mongodb.git
 cd chat-with-mongodb
+
 2️⃣ Install Dependencies
 pip install pymongo langchain langchain-google-genai google-generativeai tabulate
+
 3️⃣ Authenticate Google Gemini
 Set up Google Cloud authentication for Gemini access:
 gcloud auth application-default login
 Ensure you have enabled the Generative Language API in your Google Cloud project.
+
 4️⃣ Setup MongoDB
 use chat_with_mongodb
 db.users.insertMany([
@@ -50,6 +53,7 @@ db.users.insertMany([
   { "name": "Charlie", "age": 26 }
   { "name": "Sam", "age": 27 }
 ])
+
 5️⃣ Run the Script
 python chat_with_mongodb.py
 Example 1 : Find all users older than 27
