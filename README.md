@@ -37,56 +37,61 @@ It uses **Google Gemini (via LangChain)** to automatically generate MongoDB aggr
 git clone https://github.com/your-username/chat-with-mongodb.git
 cd chat-with-mongodb
 2️⃣ Install Dependencies
-## pip install pymongo langchain langchain-google-genai google-generativeai tabulate
+pip install pymongo langchain langchain-google-genai google-generativeai tabulate
 3️⃣ Authenticate Google Gemini
 Set up Google Cloud authentication for Gemini access:
 gcloud auth application-default login
 Ensure you have enabled the Generative Language API in your Google Cloud project.
 4️⃣ Setup MongoDB
 use chat_with_mongodb
-<img width="541" height="206" alt="image" src="https://github.com/user-attachments/assets/ae661ece-d806-4f4b-9a90-d11ee79a907f" />
 db.users.insertMany([
   { "name": "Alice", "age": 28 },
   { "name": "Bob", "age": 34 },
-  { "name": "Charlie", "age": 22 }
+  { "name": "Charlie", "age": 26 }
+  { "name": "Sam", "age": 27 }
 ])
 5️⃣ Run the Script
 python chat_with_mongodb.py
-Example 1 : Find all users older than 25
+Example 1 : Find all users older than 27
 🧾 Example Output:
 ✅ Credentials found! You can now call Gemini APIs.
-🧠 Aggregation pipeline generated: [{'$match': {'age': {'$gt': 25}}}]
+🧠 Aggregation pipeline generated: [{'$match': {'age': {'$gt': 27}}}]
 
 💬 LLM Summary:
-Found 2 users older than 25: Alice and Bob.
+ Here are the users aged greater than 27:
+
+*   **Alice**: 28 years old
+*   **Bob**: 34 years old
 
 📊 Table:
 
-+----------+-------+
-| name     | age   |
-+----------+-------+
-| Alice    | 28    |
-| Bob      | 34    |
-+----------+-------+
++--------+-------+
+| name   |   age |
++========+=======+
+| Alice  |    28 |
++--------+-------+
+| Bob    |    34 |
++--------+-------+
 
 Example 2: Now show me only their names
 🧾 Example Output
-✅ Credentials found! You can now call Gemini APIs.
-🧠 Aggregation pipeline generated: [{'$match': {'age': {'$gt': 25}}}]
+🧠 Aggregation pipeline generated: [{'$match': {'age': {'$gt': 27}}}, {'$project': {'name': 1, '_id': 0}}]
 
 💬 LLM Summary:
-Found 2 users older than 25: Alice and Bob.
+ Here are the names:
+
+*   Alice
+*   Bob
 
 📊 Table:
 
-+----------+-------+
-| name     | age   |
-+----------+-------+
-| Alice    | 28    |
-| Bob      | 34    |
-+----------+-------+
-
-
++--------+
+| name   |
++========+
+| Alice  |
++--------+
+| Bob    |
++--------+
 
 👨‍💻 Author
 Prasanna J
