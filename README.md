@@ -44,6 +44,7 @@ gcloud auth application-default login
 Ensure you have enabled the Generative Language API in your Google Cloud project.
 4️⃣ Setup MongoDB
 use chat_with_mongodb
+<img width="541" height="206" alt="image" src="https://github.com/user-attachments/assets/ae661ece-d806-4f4b-9a90-d11ee79a907f" />
 db.users.insertMany([
   { "name": "Alice", "age": 28 },
   { "name": "Bob", "age": 34 },
