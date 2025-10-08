@@ -126,5 +126,6 @@ def run_query(user_query):
 
 
 # --- Example usage ---
-print(run_query("Find all users age greather than 25"))
+print(run_query("Find all users age greather than 27"))
+
 print(run_query("Now show me only their names"))
